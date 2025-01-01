@@ -24,7 +24,7 @@
   n-mod (tap-hold $tap-time $hold-time n rmet)
   m-mod (tap-hold $tap-time $hold-time m rctl)
   caps-mod (tap-hold $tap-time $hold-time esc lctl)
-  vim-mod (tap-hold $tap-time $hold-time esc (layer-while-held vim-nav))
+  vim-mod (tap-dance $tap-time (lctl (layer-while-held vim-nav)))
 )
 
 (deflayer base
