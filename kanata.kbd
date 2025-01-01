@@ -1,11 +1,14 @@
+
 (defcfg
   process-unmapped-keys yes
 )
 
 (defsrc
-  a s d f
-  n m
-  caps
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
 )
 
 (defvar
@@ -21,11 +24,22 @@
   n-mod (tap-hold $tap-time $hold-time n rmet)
   m-mod (tap-hold $tap-time $hold-time m rctl)
   caps-mod (tap-hold $tap-time $hold-time esc lctl)
+  vim-mod (tap-hold $tap-time $hold-time esc (layer-while-held vim-nav))
 )
 
 (deflayer base
-  @a-mod @s-mod @d-mod @f-mod
-  @n-mod @m-mod
-  @caps-mod
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @caps-mod a s  d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  @vim-mod lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer vim-nav
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    left down up right ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
 )
 
